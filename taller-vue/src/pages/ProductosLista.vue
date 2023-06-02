@@ -20,27 +20,18 @@
   </template>
   
   <script>
-  import axios from 'axios';
+  import {fetchProducts} from '../services/api-services.js';
+
   
-  export default {
+  export default{
     data() {
       return {
         products: []
       };
     },
-    created() {
-      this.fetchProducts();
-    },
-    methods: {
-      fetchProducts() {
-        axios.get('http://ec2-54-163-208-73.compute-1.amazonaws.com:8080/products')
-          .then(response => {
-            this.products = response.data;
-          })
-          .catch(error => {
-            console.error(error);
-          });
-      }
+    async mounted() {
+      const result= await fetchProducts();
+      this.products=result;
     }
   }
   </script>
