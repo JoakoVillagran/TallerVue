@@ -1,18 +1,18 @@
 <template>
   <div>
-    <div v-if="usuarios">
-      <h1>Usuario</h1>
-      <div><img :src="usuarios.photo" width="150" height="150" /></div>
-      <div>Nombre: {{ usuarios.name }}</div>
-      <div>Ciudad: {{ usuarios.city }}</div>
-      <div>Biografia: {{ usuarios.bio }}</div>
-
+    <div class="card mb-4" v-if="usuarios">
+      <div class="card-body text-center">
+        <img :src="usuarios.photo" alt="avatar" class="rounded-circle img-fluid" width="150">
+        <h5>{{ usuarios.name }}</h5>
+        <p >Ciudad: {{ usuarios.city }}</p>
+        <p >Biografia: {{ usuarios.bio }}</p>
+      </div>
     </div>
     <div v-else>Loading...</div>
 
     <div v-if="resenas">
       <h3>Reseñas creadas por {{ usuarios.name }}: {{ resenas.length }}</h3>
-      <tabla-fotos :objeto="resenas" />
+      <tabla-fotos :resenas="resenas" />
     </div>
   </div>
 </template>
@@ -25,7 +25,7 @@ import TablaFotos from "@/components/TablaFotos.vue";
 export default {
   components: {
     TablaFotos
-  
+
   },
   props: {
     id: {
@@ -39,13 +39,13 @@ export default {
     };
   },
   async mounted() {
-    const responce = await cargarUsuario("647178286edc199bff73e81e");
-    this.usuarios = responce.user;
-    this.resenas = responce.reviews;
+    const response = await cargarUsuario("647178286edc199bff73e81f");
+    this.usuarios = response.user;
+    this.resenas = response.reviews;
 
-   
 
-    console.log(responce.reviews[0].user)
+console.log(response.reviews[0].review)
+
   },
 };
 </script>

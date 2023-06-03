@@ -45,7 +45,7 @@
 
 
         <div>
-            <tabla-fotos :objeto="reviews" />
+            <tabla-fotos :usuarios="reviews" />
         </div>
 
 
@@ -83,9 +83,7 @@ export default {
         this.imgs = result.product.images;
         this.reviews = result.reviews;
 
-        
-
-        console.log(result.reviews[0].user)
+        console.log(result)
     },
 };
 </script>
