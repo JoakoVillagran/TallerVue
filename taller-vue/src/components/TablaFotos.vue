@@ -1,31 +1,19 @@
 <template>
-  <div v-if="resenas">
+  <div>
     <table class="table">
       <tbody>
         <tr v-for="resena in resenas" :key="resena.id">
-          <td>
-            <img :src="resena.product.images[0]" width="100" height="100" />
-          </td>
-          <td>{{ resena.product.name }}</td>
+          <td v-if="perfil"><img :src="resena.product.images[0]" width="100" height="100" /></td>
+          <td v-else><img :src="resena.user.photo" width="100" height="100" /></td>
+          <td v-if="perfil">{{ resena.product.name }}</td>
+          <td v-else>{{ resena.user.name }}</td>
           <td>{{ resena.review }}</td>
         </tr>
       </tbody>
     </table>
   </div>
-  
-  <div v-if="usuarios">
-    <table class="table">
-      <tbody>
-        <tr v-for="usuario in usuarios" :key="usuario.id">
-          <td>
-            <img :src="usuario.user.photo" width="100" height="100" />
-          </td>
-          <td>{{ usuario.user.name }}</td>
-          <td>{{ usuario.review }}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+
+
 </template>
 
 <script>
@@ -34,8 +22,8 @@ export default {
     resenas: {
       type: Array,
     },
-    usuarios: {
-      type: Array
+    perfil: {
+      type: Boolean
     }
   }
 }

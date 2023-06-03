@@ -30,22 +30,11 @@
         </div>
 
         <div>
-
-
-            <div class="card" style="width: 18rem;">
-                <img :src="item.product.user.photo" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">{{ item.product.user.name }}</h5>
-                    <p class="card-text">{{ item.product.user.city }}</p>
-                    <a href="/perfil" class="btn btn-primary">Perfil</a>
-                </div>
-            </div>
-
+            <card-perfil :usuarios="usuario" :mostrarBoton=true />
         </div>
 
-
         <div>
-            <tabla-fotos :usuarios="reviews" />
+            <tabla-fotos :resenas="reviews" />
         </div>
 
 
@@ -56,10 +45,14 @@
 <script>
 import { getDetalles } from "../services/api-services";
 import TablaFotos from "@/components/TablaFotos.vue";
+import CardPerfil from "@/components/CardPerfil.vue";
+
+
 export default {
     name: "DetallesItem",
     components: {
-        TablaFotos
+        TablaFotos,
+        CardPerfil,
 
     },
     props: {
@@ -73,6 +66,8 @@ export default {
             item: [],
             imgs: [],
             reviews: [],
+            usuario:[],
+            
 
         };
     },
@@ -81,8 +76,8 @@ export default {
         const result = await getDetalles("647178286edc199bff73e81c");
         this.item = result;
         this.imgs = result.product.images;
+        this.usuario=result.product.user;
         this.reviews = result.reviews;
-
         console.log(result)
     },
 };
