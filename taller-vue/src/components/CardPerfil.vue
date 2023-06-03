@@ -1,12 +1,12 @@
 <template>
     <div>
-        <div class="card mb-4" v-if="usuarios">
+        <div class="card mb-4" v-if="usuario">
             <div class="card-body text-center">
-                <img :src="usuarios.photo" alt="avatar" class="rounded-circle img-fluid" width="150">
-                <h5>{{ usuarios.name }}</h5>
-                <p>Ciudad: {{ usuarios.city }}</p>
-                <p v-if="!mostrarBoton">Biografia: {{ usuarios.bio }}</p>
-                <a v-if="mostrarBoton" :href="'/perfil/' + usuarios._id" class="btn btn-primary">Perfil</a>
+                <img :src="usuario.photo" alt="avatar" class="rounded-circle img-fluid" width="150">
+                <h5>{{ usuario.name }}</h5>
+                <p>Ciudad: {{ usuario.city }}</p>
+                <p v-if="!mostrarBoton">Biografia: {{ usuario.bio }}</p>
+                <a v-if="mostrarBoton" :href="'/perfil/' + usuario._id" class="btn btn-primary">Perfil</a>
                 
             </div>
         </div>
@@ -17,7 +17,7 @@
 <script>
 export default {
     props: {
-        usuarios: {
+        usuario: {
             type: Object,
 
         },

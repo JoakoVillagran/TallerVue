@@ -12,11 +12,5 @@
 <script>
 export default {
   name: "NavBar",
-  props: {
-    paginaprincipal: {
-      type: Boolean,
-      default: true
-    }
-  }
 };
 </script>

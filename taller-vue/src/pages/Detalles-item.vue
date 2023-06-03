@@ -30,7 +30,7 @@
         </div>
 
         <div>
-            <card-perfil :usuarios="usuario" :mostrarBoton=true />
+            <card-perfil :usuario="usuario" :mostrarBoton=true />
         </div>
 
         <div>

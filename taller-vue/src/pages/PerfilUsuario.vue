@@ -1,9 +1,9 @@
 <template>
   <div>
-    <card-perfil :usuarios="usuarios" />
+    <card-perfil :usuario="usuario" />
 
     <div v-if="resenas">
-      <h3>Reseñas creadas por {{ usuarios.name }}: {{ resenas.length }}</h3>
+      <h3>Reseñas creadas por {{ usuario.name }}: {{ resenas.length }}</h3>
       <tabla-fotos :resenas="resenas" :perfil=true />
     </div>
   </div>
@@ -27,13 +27,13 @@ export default {
   },
   data() {
     return {
-      usuarios: [],
+      usuario: [],
       resenas: [],
     };
   },
   async mounted() {
     const response = await cargarUsuario(this.id);
-    this.usuarios = response.user;
+    this.usuario = response.user;
     this.resenas = response.reviews;
   },
 };
