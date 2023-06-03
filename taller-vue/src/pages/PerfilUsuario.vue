@@ -1,18 +1,10 @@
 <template>
   <div>
-    <div v-if="usuarios">
-      <h1>Usuario</h1>
-      <div><img :src="usuarios.photo" width="150" height="150" /></div>
-      <div>Nombre: {{ usuarios.name }}</div>
-      <div>Ciudad: {{ usuarios.city }}</div>
-      <div>Biografia: {{ usuarios.bio }}</div>
-
-    </div>
-    <div v-else>Loading...</div>
+    <card-perfil :usuarios="usuarios" />
 
     <div v-if="resenas">
       <h3>Reseñas creadas por {{ usuarios.name }}: {{ resenas.length }}</h3>
-      <tabla-fotos :objeto="resenas" />
+      <tabla-fotos :resenas="resenas" :perfil=true />
     </div>
   </div>
 </template>
@@ -20,12 +12,13 @@
 <script>
 import { cargarUsuario } from "../services/api-services";
 import TablaFotos from "@/components/TablaFotos.vue";
-
+import CardPerfil from "@/components/CardPerfil.vue";
 
 export default {
   components: {
-    TablaFotos
-  
+    TablaFotos,
+    CardPerfil,
+
   },
   props: {
     id: {
@@ -39,13 +32,13 @@ export default {
     };
   },
   async mounted() {
-    const responce = await cargarUsuario(this.id);
-    this.usuarios = responce.user;
-    this.resenas = responce.reviews;
+    const response = await cargarUsuario("647178286edc199bff73e81f");
+    this.usuarios = response.user;
+    this.resenas = response.reviews;
 
-   
 
-    console.log(responce.reviews[0].user)
+    console.log(response.reviews[0].review)
+
   },
 };
 </script>
