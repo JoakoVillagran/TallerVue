@@ -73,7 +73,7 @@ export default {
     },
     async mounted() {
 
-        const result = await getDetalles("647178286edc199bff73e81c");
+        const result = await getDetalles(this.id);
         this.item = result;
         this.imgs = result.product.images;
         this.usuario=result.product.user;
