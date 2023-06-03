@@ -35,10 +35,6 @@ export default {
     const response = await cargarUsuario(this.id);
     this.usuarios = response.user;
     this.resenas = response.reviews;
-
-
-  
-
   },
 };
 </script>

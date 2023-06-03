@@ -78,8 +78,6 @@ export default {
         this.imgs = result.product.images;
         this.usuario=result.product.user;
         this.reviews = result.reviews;
-        console.log(result.product.user)
-        
     },
 };
 </script>

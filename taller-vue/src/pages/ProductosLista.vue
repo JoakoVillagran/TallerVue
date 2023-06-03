@@ -3,7 +3,7 @@
     <h1>Lista de Productos</h1>
     <ul>
       <li v-for="product in products" :key="product">
-        <div class="card">
+        <div class="card" @click="irADetallesItem(product._id)">
           <p>Nombre:{{ product.name }}</p>
           <p>Descripcion:{{ product.description }}</p>
           <p>Fecha de publicacion:{{ product.createdAt }}</p>
@@ -11,7 +11,7 @@
           <p>Ciudad:{{ product.user.city }}</p>
 
 
-          <p><img width="250" height="250" :src="product.images" />
+          <p><img width="250" height="250" :src="product.images[0]" />
           </p>
         </div>
       </li>
@@ -33,6 +33,11 @@ export default {
   async mounted() {
     const result = await fetchProducts();
     this.products = result;
+
+  }, methods: {
+    irADetallesItem(id) {
+      this.$router.push(`/detalles-item/${id}`);
+    }
   }
 }
 </script>
