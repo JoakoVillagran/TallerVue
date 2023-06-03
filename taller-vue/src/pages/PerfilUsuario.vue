@@ -39,11 +39,13 @@ export default {
     };
   },
   async mounted() {
-    const responce = await cargarUsuario("647178286edc199bff73e81f");
+    const responce = await cargarUsuario("647178286edc199bff73e81e");
     this.usuarios = responce.user;
     this.resenas = responce.reviews;
+
+   
+
+    console.log(responce.reviews[0].user)
   },
 };
 </script>
-
-<style></style>

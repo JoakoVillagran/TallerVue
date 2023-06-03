@@ -1,0 +1,91 @@
+<template>
+    <div v-if="item.product && imgs">
+        <div class="card" style="width: 18rem;">
+            <div class="card-header">{{ item.product.createdAt }}
+            </div>
+            <div id="carouselExample" class="carousel slide">
+                <div class="carousel-inner">
+                    <div v-for="img in imgs" :key="img.index">
+                        <div class="carousel-item active">
+                            <img :src="img" class="d-block w-100" alt="...">
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title"><strong>{{ item.product.name }}</strong></h5>
+                <p class="card-text">{{ item.product.description }}</p>
+            </div>
+            <div>
+                <strong>{{ item.product.price }}</strong>
+            </div>
+        </div>
+
+        <div>
+
+
+            <div class="card" style="width: 18rem;">
+                <img :src="item.product.user.photo" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{ item.product.user.name }}</h5>
+                    <p class="card-text">{{ item.product.user.city }}</p>
+                    <a href="/perfil" class="btn btn-primary">Perfil</a>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div>
+            <tabla-fotos :objeto="reviews" />
+        </div>
+
+
+
+    </div>
+</template>
+
+<script>
+import { getDetalles } from "../services/api-services";
+import TablaFotos from "@/components/TablaFotos.vue";
+export default {
+    name: "DetallesItem",
+    components: {
+        TablaFotos
+
+    },
+    props: {
+        id: {
+            type: String,
+            default: "",
+        },
+    },
+    data() {
+        return {
+            item: [],
+            imgs: [],
+            reviews: [],
+
+        };
+    },
+    async mounted() {
+
+        const result = await getDetalles("647178286edc199bff73e81c");
+        this.item = result;
+        this.imgs = result.product.images;
+        this.reviews = result.reviews;
+
+        
+
+        console.log(result.reviews[0].user)
+    },
+};
+</script>
