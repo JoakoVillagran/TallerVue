@@ -6,7 +6,8 @@
                 <h5>{{ usuarios.name }}</h5>
                 <p>Ciudad: {{ usuarios.city }}</p>
                 <p v-if="!mostrarBoton">Biografia: {{ usuarios.bio }}</p>
-                <a v-if="mostrarBoton" href="/perfil" class="btn btn-primary">Perfil</a>
+                <a v-if="mostrarBoton" :href="'/perfil/' + usuarios._id" class="btn btn-primary">Perfil</a>
+                
             </div>
         </div>
         <div v-else>Loading...</div>
