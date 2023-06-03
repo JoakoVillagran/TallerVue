@@ -37,7 +37,7 @@ export default {
     this.resenas = response.reviews;
 
 
-    console.log(response.reviews[0].review)
+  
 
   },
 };

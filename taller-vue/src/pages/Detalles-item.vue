@@ -73,12 +73,12 @@ export default {
     },
     async mounted() {
 
-        const result = await getDetalles(this.id);
+        const result = await getDetalles("647178286edc199bff73e81c");
         this.item = result;
         this.imgs = result.product.images;
         this.usuario=result.product.user;
         this.reviews = result.reviews;
-        console.log(result)
+        
     },
 };
 </script>
