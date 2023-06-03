@@ -43,6 +43,9 @@
 
 </div>
 
+<div>
+            <tabla-fotos :objeto="reviews" />
+        </div>
 
 
 </div>
@@ -50,27 +53,33 @@
 
 <script>
 import { getDetalles } from "../services/api-services";
+import TablaFotos from "@/components/TablaFotos.vue";
 export default {
-  name: "DetallesItem",
-  props: {
-    id: {
-      type: String,
-      default: "",
+    name: "DetallesItem",
+    components: {
+        TablaFotos
+
     },
-  },
-  data() {
-    return {
-      item: [],
-      imgs:[],
-    
-    };
-  },
+    props: {
+        id: {
+            type: String,
+            default: "",
+        },
+    },
+    data() {
+        return {
+            item: [],
+            imgs: [],
+            reviews: [],
+
+        };
+    },
   async mounted() {
 
     const result = await getDetalles(this.id);
     this.item = result;
     this.imgs = result.product.images;
-    console.log(result.review);
+    this.reviews = result.reviews;
   },
 };
 </script>
