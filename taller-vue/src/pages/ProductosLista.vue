@@ -26,7 +26,8 @@ import { fetchProducts } from '../services/api-services.js';
 export default {
   data() {
     return {
-      products: []
+      products: [],
+
     };
   },
   async mounted() {
