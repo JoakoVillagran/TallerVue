@@ -6,38 +6,27 @@
       <div>Nombre: {{ usuarios.name }}</div>
       <div>Ciudad: {{ usuarios.city }}</div>
       <div>Biografia: {{ usuarios.bio }}</div>
-      
+
     </div>
     <div v-else>Loading...</div>
 
     <div v-if="resenas">
       <h3>Reseñas creadas por {{ usuarios.name }}: {{ resenas.length }}</h3>
-      <table class="table">
-        <thead>
-          <tr>
-            <th></th>
-            <th>Producto</th>
-            <th>Review</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="resena in resenas" :key="resena.id">
-            <td>
-              <img :src="resena.product.images[0]" width="100" height="100" />
-            </td>
-            <td>{{ resena.product.name }}</td>
-            <td>{{ resena.review }}</td>
-          </tr>
-        </tbody>
-      </table>
+      <tabla-fotos :objeto="resenas" />
     </div>
   </div>
 </template>
 
 <script>
 import { cargarUsuario } from "../services/api-services";
+import TablaFotos from "@/components/TablaFotos.vue";
+
 
 export default {
+  components: {
+    TablaFotos
+  
+  },
   props: {
     id: {
       default: "",
@@ -57,5 +46,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>
