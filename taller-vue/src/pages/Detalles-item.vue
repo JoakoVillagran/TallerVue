@@ -1,6 +1,6 @@
 <template>
     <div v-if="item.product && imgs">
-        <div class="card" style="width: 18rem;">
+        <div id= "div-prod" class="card" style="width: 18rem;">
             <div class="card-header">{{ item.product.createdAt }}
   </div>
             <div id="carouselExample" class="carousel slide">
@@ -32,20 +32,15 @@
 <div>
 
 
-    <div class="card" style="width: 18rem;">
-  <img :src="item.product.user.photo" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">{{ item.product.user.name }}</h5>
-    <p class="card-text">{{ item.product.user.city }}</p>
-    <a href="/perfil" class="btn btn-primary">Perfil</a>
-  </div>
+  <div>
+            <card-perfil :usuario="usuario" :mostrarBoton=true />
+        </div>
 </div>
 
 </div>
 
 <div>
             <tabla-fotos :objeto="reviews" />
-        </div>
 
 
 </div>
@@ -53,11 +48,13 @@
 
 <script>
 import { getDetalles } from "../services/api-services";
-import TablaFotos from "@/components/TablaFotos.vue";
+import TablaFotos from "../components/TablaFotos.vue";
+import  CardPerfil from "../components/CardPerfil.vue"
 export default {
     name: "DetallesItem",
     components: {
-        TablaFotos
+        TablaFotos,
+        CardPerfil,
 
     },
     props: {
@@ -71,6 +68,8 @@ export default {
             item: [],
             imgs: [],
             reviews: [],
+            usuario:[],
+
 
         };
     },
@@ -80,6 +79,7 @@ export default {
     this.item = result;
     this.imgs = result.product.images;
     this.reviews = result.reviews;
+    this.usuario=result.product.user;
   },
 };
 </script>
@@ -93,4 +93,9 @@ h5 strong {
  color: black;
  font-size: 30px;
 }
+
+#div-prod{
+  margin:2px auto  ;
+}
+
 </style>
