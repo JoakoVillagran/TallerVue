@@ -4,12 +4,11 @@
     <ul class="lista-item">
       <li v-for="product in products" :key="product">
         <div class="card" @click="irADetallesItem(product._id)">
-          <p>Nombre:{{ product.name }}</p>
-          <p>Descripcion:{{ product.description }}</p>
-          <p>Fecha de publicacion:{{ product.createdAt }}</p>
-          <p>Precio:${{ product.price }}</p>
-          <p>Ciudad:{{ product.user.city }}</p>
-
+          <p><strong>Nombre:</strong> {{ product.name }}</p>
+          <p><strong>Descripción:</strong> {{ product.description }}</p>
+          <p><strong>Fecha de publicación:</strong> {{ product.createdAt }}</p>
+          <p><strong>Precio:</strong> ${{ product.price }}</p>
+          <p><strong>Ciudad:</strong> {{ product.user.city }}</p>
 
           <p><img width="250" height="250" :src="product.images[0]" />
           </p>
