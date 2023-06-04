@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { createRouter, createWebHistory } from 'vue-router';
 
 import PerfilUsuario from "../src/pages/PerfilUsuario"
@@ -31,6 +30,3 @@ const router = createRouter({
 });
 
 export default router;
-=======
-import { createRouter, createWebHashHistory } from 'vue-router';
->>>>>>> parent of d037e810 (haciendo de nuevo el main)
