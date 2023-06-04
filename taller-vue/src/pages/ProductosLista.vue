@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <h1>Lista de Productos</h1>
-    <ul>
+  <div class="lista-producto">
+    <h1 class="titulo">Lista de Productos</h1>
+    <ul class="lista-item">
       <li v-for="product in products" :key="product">
         <div class="card" @click="irADetallesItem(product._id)">
           <p>Nombre:{{ product.name }}</p>
@@ -41,4 +41,24 @@ export default {
   }
 }
 </script>
+<style>
+.titulo {
+  text-align: center;
+  font-family: "Arial", sans-serif;
+}
+
+.lista-item {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+  list-style-type: none;
+}
+
+.lista-producto .card {
+  border: 1px solid #ccc;
+  padding: 20px;
+  display: flex;
+  background-color: #F3F3F3;
+}
+</style>
   
