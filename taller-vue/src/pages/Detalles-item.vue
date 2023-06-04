@@ -41,7 +41,7 @@
 
     </div>
 <div>
-            <tabla-fotos :objeto="reviews" />
+            <tabla-fotos :resenas="reviews" />
 
 
 </div>
