@@ -88,7 +88,7 @@ export default {
 <style>
 strong {
   color: green;
-  font-size: 50px;
+
 }
 
 h5 strong {
